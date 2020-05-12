@@ -11,7 +11,6 @@ class PrefUtil {
         }
 
         private const val PREVIOUS_TIMER_LENGTH_SECONDS_ID = "com.rescoder.timer.prevois_timer_length"
-
         fun getPreviousTimerLengthSeconds(context: Context): Long {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
             return preferences.getLong(PREVIOUS_TIMER_LENGTH_SECONDS_ID, defValue:0)
@@ -40,12 +39,10 @@ class PrefUtil {
         }
 
         private const val SECONDS_REMAINING_ID = "com.rescoder.timer.seconds_remaining"
-
         fun getSecondsRemaining(context: Context): Long {
             val preferences = PreferenceManager.getDefaultSharedPreferences(context)
             return preferences.getLong(SECONDS_REMAINING_ID, defValue=0)
         }
-
         fun setSecondsRemaining(seconds: Long, context: Context) {
             val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
             editor.putLong(SECONDS_REMAINING_ID, seconds)

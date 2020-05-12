@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
                 //afisare notificari
             }
 
+
             PrefUtil.setPreviousTimerLenghtSeconds(timerLengthSeconds)
             PrefUtil.setSecondsRemaining(secondsRemaining, context = this)
             PrefUtil.setTimerState(timerState, context = this)
@@ -96,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         val minutesUntilFinished = (secondsRemaining / 60)
         val minutesUntilFinished = secondsRemaining - minutesUntilFinished * 60
         var secondsStr = secondsInMinutesUntilFinished.toString()
+
         textView_countdown.text = "$minutesUntilFinished:${
         if (secondsStr.lenth == 2) secondsStr
         else "0" + secondsStr}"
@@ -112,6 +114,7 @@ class MainActivity : AppCompatActivity() {
         secondsRemaining = timerLengthSeconds
         updateButtons()
         updateCountdownUI()
+
     }
 
     private var secondsRemaining = 0L
@@ -146,11 +149,13 @@ class MainActivity : AppCompatActivity() {
                 fab_pause.isEnabled = true
                 fab_stop.isEnabled = true
             }
+
             TimerState.Stopped ->{
                 fab_play.isEnabled = true
                 fab_pause.isEnabled = false
                 fab_stop.isEnabled = false
             }
+
             TimerState.Paused ->{
                 fab_play.isEnabled = true
                 fab_pause.isEnabled = false
@@ -160,15 +165,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
